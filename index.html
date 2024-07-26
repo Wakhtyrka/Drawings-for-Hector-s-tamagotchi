@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Art Creator</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        #pixel-canvas {
+            border: 1px solid #000;
+            background-color: #fff;
+        }
+        #color-palette {
+            display: grid;
+            grid-template-columns: repeat(4, 20px);
+            gap: 2px;
+            margin: 10px 0;
+        }
+        .color {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            border: 1px solid #000;
+        }
+        #controls {
+            margin-top: 10px;
+        }
+        #description, #characterName {
+            width: 100%;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pixel Art Creator</h1>
+    <canvas id="pixel-canvas"></canvas>
+    <div id="color-palette">
+        <div class="color" style="background-color: #ffffff;" data-color="#ffffff"></div>
+        <div class="color" style="background-color: #ffd19d;" data-color="#ffd19d"></div>
+        <div class="color" style="background-color: #aeb5bd;" data-color="#aeb5bd"></div>
+        <div class="color" style="background-color: #4d80c9;" data-color="#4d80c9"></div>
+        <div class="color" style="background-color: #e93841;" data-color="#e93841"></div>
+        <div class="color" style="background-color: #100820;" data-color="#100820"></div>
+        <div class="color" style="background-color: #511e43;" data-color="#511e43"></div>
+        <div class="color" style="background-color: #054494;" data-color="#054494"></div>
+        <div class="color" style="background-color: #f1892d;" data-color="#f1892d"></div>
+        <div class="color" style="background-color: #823e2c;" data-color="#823e2c"></div>
+        <div class="color" style="background-color: #ffa9a9;" data-color="#ffa9a9"></div>
+        <div class="color" style="background-color: #5ae150;" data-color="#5ae150"></div>
+        <div class="color" style="background-color: #ffe947;" data-color="#ffe947"></div>
+        <div class="color" style="background-color: #7d3ebf;" data-color="#7d3ebf"></div>
+        <div class="color" style="background-color: #eb6c82;" data-color="#eb6c82"></div>
+        <div class="color" style="background-color: #1e8a4c;" data-color="#1e8a4c"></div>
+    </div>
+    <div id="controls">
+        <input type="text" id="characterName" placeholder="Character Name">
+        <textarea id="description" placeholder="Image Description"></textarea>
+        <input type="range" id="brush-size-slider" min="1" max="8" value="1">
+        <button id="clear-button">Clear</button>
+        <button id="save-button">Save</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
