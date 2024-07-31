@@ -5,7 +5,9 @@ body {
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #333;
+    color: #fff;
+    font-family: Arial, sans-serif;
 }
 
 #color-palette {
@@ -23,7 +25,7 @@ body {
     cursor: pointer;
 }
 
-#clear-button {
+#clear-button, #save-button, #undo-button, #redo-button {
     margin-bottom: 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -40,17 +42,7 @@ body {
     margin-left: 10px;
 }
 
-#canvas-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: calc(100vh - 260px); /* Adjusted to account for color palette, clear button, and brush size slider */
-    padding: 20px; /* Add padding around the container */
-    box-sizing: border-box;
-}
-
 #pixel-canvas {
     border: 1px solid #000;
-    background-color: white; /* Background color to distinguish the canvas */
+    background-color: white;
 }

@@ -12,6 +12,9 @@
             background-color: #333;
             color: #fff;
             font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            justify-content: center;
         }
         #pixel-canvas {
             border: 1px solid #000;
@@ -19,22 +22,44 @@
         }
         #color-palette {
             display: grid;
-            grid-template-columns: repeat(4, 20px);
-            gap: 2px;
-            margin: 10px 0;
+            grid-template-columns: repeat(4, 40px);
+            grid-template-rows: repeat(4, 40px);
+            gap: 5px;
+            margin-bottom: 10px;
         }
         .color {
-            width: 20px;
-            height: 20px;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            border: 1px solid #000;
+            border: 2px solid #ccc;
         }
         #controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-top: 10px;
         }
         #description, #characterName {
             width: 100%;
             margin: 5px 0;
+        }
+        #brush-size-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        #brush-size-slider {
+            margin-left: 10px;
+        }
+        .button-row {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -62,9 +87,16 @@
     <div id="controls">
         <input type="text" id="characterName" placeholder="Character Name">
         <textarea id="description" placeholder="Image Description"></textarea>
-        <input type="range" id="brush-size-slider" min="1" max="8" value="1">
-        <button id="clear-button">Clear</button>
-        <button id="save-button">Save</button>
+        <div id="brush-size-container">
+            <label for="brush-size-slider">Brush Size:</label>
+            <input type="range" id="brush-size-slider" min="1" max="8" value="1">
+        </div>
+        <div class="button-row">
+            <button id="clear-button">Clear</button>
+            <button id="save-button">Save</button>
+            <button id="undo-button">Undo</button>
+            <button id="redo-button">Redo</button>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

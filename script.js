@@ -6,6 +6,8 @@ const brushSizeSlider = document.getElementById('brush-size-slider');
 const saveButton = document.getElementById('save-button');
 const descriptionInput = document.getElementById('description');
 const characterNameInput = document.getElementById('characterName');
+const undoButton = document.getElementById('undo-button');
+const redoButton = document.getElementById('redo-button');
 
 let cellSize = 16; // Each cell is always 16x16 pixels
 canvas.width = cellSize * 24;
@@ -71,9 +73,20 @@ canvas.addEventListener('mousedown', (e) => {
 canvas.addEventListener('mouseup', () => drawing = false);
 canvas.addEventListener('mousemove', draw);
 
+canvas.addEventListener('touchstart', (e) => {
+    saveState();
+    drawing = true;
+    draw(e.touches[0]);
+});
+canvas.addEventListener('touchend', () => drawing = false);
+canvas.addEventListener('touchmove', (e) => draw(e.touches[0]));
+
 canvas.addEventListener('click', (e) => {
     if (!drawing) draw(e);
 });
+
+// Fix mouse release bug by listening to mouseup event on window
+window.addEventListener('mouseup', () => drawing = false);
 
 clearButton.addEventListener('click', () => {
     if (confirm('Are you sure you want to clear the canvas? This action cannot be undone.')) {
@@ -88,6 +101,9 @@ brushSizeSlider.addEventListener('input', () => {
 });
 
 saveButton.addEventListener('click', savePixelArt);
+
+undoButton.addEventListener('click', undo);
+redoButton.addEventListener('click', redo);
 
 document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.key === 'z') {
